@@ -1,0 +1,8 @@
+---
+title: kedro_tdda
+replace_base_domain: "https://sinanpl.github.io/kedro_tdda"
+replace_rel_path: "/reference/index.html"
+---
+
+
+{{< include index.qmd >}}
