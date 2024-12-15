@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kedro_tdda"
+version = "0.1.0"
+description = "A kedro integration for the tdda package"
+authors = [{name="Sinan Polatoglu"}]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+dependencies = [
+    "kedro-datasets[pandas]", 
+    "kedro>=0.19.0,<0.20",
+    "tdda"
+]
+
+[project.entry-points."kedro.project_commands"]
+kedro_tdda = "kedro_tdda.cli:commands"
+
+[project.entry-points."kedro.hooks"]
+kedro_tdda = "kedro_tdda.hooks:tdda_hooks"
