@@ -1,0 +1,34 @@
+# TddaHooks { #kedro_tdda.hooks.TddaHooks }
+
+```python
+hooks.TddaHooks()
+```
+
+
+
+## Methods
+
+| Name | Description |
+| --- | --- |
+| [after_context_created](#kedro_tdda.hooks.TddaHooks.after_context_created) | After the KedroContext is created, the config loader is |
+| [after_dataset_loaded](#kedro_tdda.hooks.TddaHooks.after_dataset_loaded) | This dataset hook will run tdda verify on each dataset |
+
+### after_context_created { #kedro_tdda.hooks.TddaHooks.after_context_created }
+
+```python
+hooks.TddaHooks.after_context_created(context)
+```
+
+After the KedroContext is created, the config loader is
+modified to include the pattern `tdda`. This will load tdda specification 
+that match the regex pattern. Subsequently, constraints specifications 
+are saved for furhter use with dataset hooks.
+
+### after_dataset_loaded { #kedro_tdda.hooks.TddaHooks.after_dataset_loaded }
+
+```python
+hooks.TddaHooks.after_dataset_loaded(dataset_name, data)
+```
+
+This dataset hook will run tdda verify on each dataset
+that has a constraint specification

@@ -1,0 +1,15 @@
+# Function reference {.doc .doc-index}
+
+## CLI commands
+
+| | |
+| --- | --- |
+| [discover](discover.qmd#kedro_tdda.cli.discover) | The tdda discover command generates constraints for data,  |
+| [verify](verify.qmd#kedro_tdda.cli.verify) | The tdda verify command is used to validate pandas dataframes,  |
+| [detect](detect.qmd#kedro_tdda.cli.detect) | The tdda detect command is used to detect anomalies on data,  |
+
+## Hooks
+
+| | |
+| --- | --- |
+| [TddaHooks](TddaHooks.qmd#kedro_tdda.hooks.TddaHooks) |  |

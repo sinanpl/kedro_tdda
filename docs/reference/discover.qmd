@@ -1,0 +1,8 @@
+# discover { #kedro_tdda.cli.discover }
+
+```python
+cli.discover(dataset_name, env, overwrite)
+```
+
+The tdda discover command generates constraints for data, 
+and saves the generated constraints as a yaml file.

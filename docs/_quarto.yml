@@ -1,0 +1,45 @@
+# quarto.yml contains two "workflows"
+# 1) quarto doc to created content from python docstrings
+# 2) render the content to a html webpage
+
+# generate docs content
+quartodoc:
+  style: pkgdown
+  package: kedro_tdda
+  sidebar: _sidebar.yml
+  sections:
+    - title: CLI commands
+      package: kedro_tdda.cli
+      contents:
+        - discover
+        - verify
+        - detect
+    - title: Hooks
+      package: kedro_tdda.hooks
+      contents:
+        - TddaHooks
+
+# render options
+project:
+  type: website
+
+website:
+  title: "kedro_tdda"
+  navbar:
+    pinned: true
+    left:
+      - text: "Reference"
+        href: ./reference/index.html
+    right:
+      - text: "`kedro`"
+        href: https://kedro.org/
+      - text: "`tdda`"
+        href: https://tdda.readthedocs.io
+
+# tell quarto to read the generated sidebar
+metadata-files:
+  - _sidebar.yml
+
+format:
+  html:
+    theme: flatly
