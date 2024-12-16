@@ -223,10 +223,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="kedro_tdda.cli.verify" class="level1">
 <h1>verify</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cli.verify(dataset_name, env)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cli.verify(dataset_name<span class="op">=</span><span class="va">None</span>, env<span class="op">=</span><span class="st">'base'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The tdda verify command is used to validate pandas dataframes, against a constraints specification.</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 76%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataset_name</td>
+<td>Optional[str]</td>
+<td>Optional catalog name for the pandas dataset. If not specified, verify will check constraints for every pandas dataset in the catalog</td>
+<td><code>None</code></td>
+</tr>
+<tr class="even">
+<td>env</td>
+<td>Optional[str]</td>
+<td>Which conf/<env>/tdda folder to read constraints from</env></td>
+<td><code>'base'</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="usage" class="level2 doc-section doc-section-usage">
+<h2 class="doc-section doc-section-usage anchored" data-anchor-id="usage">Usage</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">kedro</span> verify</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

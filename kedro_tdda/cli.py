@@ -1,4 +1,5 @@
 import logging
+from typing import Optional
 
 import click
 
@@ -47,10 +48,23 @@ def tdda_commands():
     help="Boolean indicator for overwriting an existing tdda constrains yml specification",
     is_flag=True,
 )
-def discover(dataset_name: str, env: str, overwrite: bool):
+def discover(dataset_name: Optional[str] = None, env: Optional[str] = DEFAULT_ENV_TDDA, overwrite: Optional[bool] = None):
     """
     The tdda discover command generates constraints for data, 
     and saves the generated constraints as a yaml file.
+
+    Args:
+        dataset_name (Optional[str]): Optional catalog name for the pandas dataset. 
+            If not specified, discover will write constraints for every
+            pandas dataset in the catalog
+        env (Optional[str]): Which conf/<env>/tdda folder to write the constraints to
+        overwrite (Optional[bool]): If a constraints file exists, the overwrite flag
+            will overwrite the file.
+    
+    Usage:
+        ```sh
+        kedro discover
+        ```
     """
     ks = KedroSettings(env)
 
@@ -75,13 +89,24 @@ def discover(dataset_name: str, env: str, overwrite: bool):
     help="The kedro environment where the dataset to retrieve is available. Default to 'base'",
 )
 def verify(
-    dataset_name: str,
-    env: str,
+    dataset_name: Optional[str]=None,
+    env: Optional[str]='base',
 ):
     """
     The tdda verify command is used to validate pandas dataframes, 
     against a constraints specification.
-    """    
+    
+    Args:
+        dataset_name (Optional[str]): Optional catalog name for the pandas dataset. 
+            If not specified, verify will check constraints for every
+            pandas dataset in the catalog
+        env (Optional[str]): Which conf/<env>/tdda folder to read constraints from
+
+    Usage:
+        ```sh
+        kedro verify
+        ```
+    """
     ks = KedroSettings(env)
 
     if dataset_name:
@@ -110,11 +135,23 @@ def verify(
     default=DEFAULT_DIR_TDDA_DETECT,
     help="Target directory in which the tdda detection csv can be saved. Should always be a directory",
 )
-def detect(dataset_name: str, env: str, target_dir: str):
+def detect(dataset_name: Optional[str]=None, env: Optional[str]='base', target_dir: Optional[str]='./tdda_detect'):
     """
     The tdda detect command is used to detect anomalies on data, 
     by checking pandas dataframes against specified constraints.
-    """    
+
+    Args:
+        dataset_name (Optional[str]): Optional catalog name for the pandas dataset. 
+            If not specified, discover will write constraints for every
+            pandas dataset in the catalog
+        env (Optional[str]): Which conf/<env>/tdda folder to read constraints from
+        target_dir (Optional[str]): Which directory to write `detect` (.csv) files to
+    
+    Usage:
+        ```sh
+        kedro discover
+        ```
+    """
     ks = KedroSettings(env)
 
     if dataset_name:

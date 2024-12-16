@@ -1,8 +1,0 @@
-# cli.detect { #kedro_tdda.cli.detect }
-
-```python
-cli.detect(dataset_name, env, target_dir)
-```
-
-The tdda detect command is used to detect anomalies on data, 
-by checking pandas dataframes against specified constraints.

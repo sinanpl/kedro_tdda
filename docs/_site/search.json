@@ -1,31 +1,32 @@
 [
   {
-    "objectID": "reference/tdda_commands.html",
-    "href": "reference/tdda_commands.html",
-    "title": "tdda_commands",
-    "section": "",
-    "text": "tdda_commands\ncli.tdda_commands()\nUse tdda-specific commands inside kedro project."
-  },
-  {
-    "objectID": "reference/hooks.TddaHooks.html",
-    "href": "reference/hooks.TddaHooks.html",
-    "title": "hooks.TddaHooks",
-    "section": "",
-    "text": "hooks.TddaHooks()\n\n\n\n\n\nName\nDescription\n\n\n\n\nafter_context_created\nAfter the KedroContext is created, the config loader is\n\n\nafter_dataset_loaded\nThis dataset hook will run tdda verify on each dataset\n\n\n\n\n\nhooks.TddaHooks.after_context_created(context)\nAfter the KedroContext is created, the config loader is modified to include the pattern tdda. This will load tdda specification that match the regex pattern. Subsequently, constraints specifications are saved for furhter use with dataset hooks.\n\n\n\nhooks.TddaHooks.after_dataset_loaded(dataset_name, data)\nThis dataset hook will run tdda verify on each dataset that has a constraint specification"
-  },
-  {
-    "objectID": "reference/hooks.TddaHooks.html#methods",
-    "href": "reference/hooks.TddaHooks.html#methods",
-    "title": "hooks.TddaHooks",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\nafter_context_created\nAfter the KedroContext is created, the config loader is\n\n\nafter_dataset_loaded\nThis dataset hook will run tdda verify on each dataset\n\n\n\n\n\nhooks.TddaHooks.after_context_created(context)\nAfter the KedroContext is created, the config loader is modified to include the pattern tdda. This will load tdda specification that match the regex pattern. Subsequently, constraints specifications are saved for furhter use with dataset hooks.\n\n\n\nhooks.TddaHooks.after_dataset_loaded(dataset_name, data)\nThis dataset hook will run tdda verify on each dataset that has a constraint specification"
-  },
-  {
     "objectID": "reference/verify.html",
     "href": "reference/verify.html",
     "title": "verify",
     "section": "",
-    "text": "verify\ncli.verify(dataset_name, env)\nThe tdda verify command is used to validate pandas dataframes, against a constraints specification.",
+    "text": "cli.verify(dataset_name=None, env='base')\nThe tdda verify command is used to validate pandas dataframes, against a constraints specification.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndataset_name\nOptional[str]\nOptional catalog name for the pandas dataset. If not specified, verify will check constraints for every pandas dataset in the catalog\nNone\n\n\nenv\nOptional[str]\nWhich conf//tdda folder to read constraints from\n'base'\n\n\n\n\n\n\nkedro verify",
+    "crumbs": [
+      "CLI commands",
+      "verify"
+    ]
+  },
+  {
+    "objectID": "reference/verify.html#parameters",
+    "href": "reference/verify.html#parameters",
+    "title": "verify",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ndataset_name\nOptional[str]\nOptional catalog name for the pandas dataset. If not specified, verify will check constraints for every pandas dataset in the catalog\nNone\n\n\nenv\nOptional[str]\nWhich conf//tdda folder to read constraints from\n'base'",
+    "crumbs": [
+      "CLI commands",
+      "verify"
+    ]
+  },
+  {
+    "objectID": "reference/verify.html#usage",
+    "href": "reference/verify.html#usage",
+    "title": "verify",
+    "section": "",
+    "text": "kedro verify",
     "crumbs": [
       "CLI commands",
       "verify"
@@ -36,25 +37,73 @@
     "href": "reference/discover.html",
     "title": "discover",
     "section": "",
-    "text": "discover\ncli.discover(dataset_name, env, overwrite)\nThe tdda discover command generates constraints for data, and saves the generated constraints as a yaml file.",
+    "text": "cli.discover(dataset_name=None, env=DEFAULT_ENV_TDDA, overwrite=None)\nThe tdda discover command generates constraints for data, and saves the generated constraints as a yaml file.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndataset_name\nOptional[str]\nOptional catalog name for the pandas dataset. If not specified, discover will write constraints for every pandas dataset in the catalog\nNone\n\n\nenv\nOptional[str]\nWhich conf//tdda folder to write the constraints to\nDEFAULT_ENV_TDDA\n\n\noverwrite\nOptional[bool]\nIf a constraints file exists, the overwrite flag will overwrite the file.\nNone\n\n\n\n\n\n\nkedro discover",
     "crumbs": [
       "CLI commands",
       "discover"
     ]
   },
   {
-    "objectID": "reference/cli.detect.html",
-    "href": "reference/cli.detect.html",
-    "title": "cli.detect",
+    "objectID": "reference/discover.html#parameters",
+    "href": "reference/discover.html#parameters",
+    "title": "discover",
     "section": "",
-    "text": "cli.detect\ncli.detect(dataset_name, env, target_dir)\nThe tdda detect command is used to detect anomalies on data, by checking pandas dataframes against specified constraints."
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ndataset_name\nOptional[str]\nOptional catalog name for the pandas dataset. If not specified, discover will write constraints for every pandas dataset in the catalog\nNone\n\n\nenv\nOptional[str]\nWhich conf//tdda folder to write the constraints to\nDEFAULT_ENV_TDDA\n\n\noverwrite\nOptional[bool]\nIf a constraints file exists, the overwrite flag will overwrite the file.\nNone",
+    "crumbs": [
+      "CLI commands",
+      "discover"
+    ]
+  },
+  {
+    "objectID": "reference/discover.html#usage",
+    "href": "reference/discover.html#usage",
+    "title": "discover",
+    "section": "",
+    "text": "kedro discover",
+    "crumbs": [
+      "CLI commands",
+      "discover"
+    ]
+  },
+  {
+    "objectID": "reference/detect.html",
+    "href": "reference/detect.html",
+    "title": "detect",
+    "section": "",
+    "text": "cli.detect(dataset_name=None, env='base', target_dir='./tdda_detect')\nThe tdda detect command is used to detect anomalies on data, by checking pandas dataframes against specified constraints.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndataset_name\nOptional[str]\nOptional catalog name for the pandas dataset. If not specified, discover will write constraints for every pandas dataset in the catalog\nNone\n\n\nenv\nOptional[str]\nWhich conf//tdda folder to read constraints from\n'base'\n\n\ntarget_dir\nOptional[str]\nWhich directory to write detect (.csv) files to\n'./tdda_detect'\n\n\n\n\n\n\nkedro discover",
+    "crumbs": [
+      "CLI commands",
+      "detect"
+    ]
+  },
+  {
+    "objectID": "reference/detect.html#parameters",
+    "href": "reference/detect.html#parameters",
+    "title": "detect",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ndataset_name\nOptional[str]\nOptional catalog name for the pandas dataset. If not specified, discover will write constraints for every pandas dataset in the catalog\nNone\n\n\nenv\nOptional[str]\nWhich conf//tdda folder to read constraints from\n'base'\n\n\ntarget_dir\nOptional[str]\nWhich directory to write detect (.csv) files to\n'./tdda_detect'",
+    "crumbs": [
+      "CLI commands",
+      "detect"
+    ]
+  },
+  {
+    "objectID": "reference/detect.html#usage",
+    "href": "reference/detect.html#usage",
+    "title": "detect",
+    "section": "",
+    "text": "kedro discover",
+    "crumbs": [
+      "CLI commands",
+      "detect"
+    ]
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "kedro-tdda",
     "section": "",
-    "text": "This plugin extends kedro with a lightweight data validation tool: tdda. The tdda package enables you to discover constraints from data, validate new data and detect anomalies. Check the tdda website for more info.\nThis kedro plugin is limited to it’s constraints API and alike tdda only supports pandas datasets. The plugin includes a CLI interface and dataset hooks\nFor more extensive needs, please check kedro_pandera\n\n\nYou can install the package like so\npip install git+https://github.com/sinanpl/kedro_tdda\n\n\n\n\n\nThe plugin currently uses the constraints API of tdda. The available commands are\n\ndiscover: infer constraints for a dataset and write to yaml. Constraints are inferred by field. Examples are:\n\ntype: one of int, real, bool, string or date\nmin: minimum allowed value,\nmax: maximum allowed value,\nmin_length: minimum allowed string length (for string fields),\nmax_length: maximum allowed string length (for string fields),\nmax_nulls: maximum number of null values allowed,\nsign: one of positive, negative, non-positive, non-negative,\nno_duplicates: true if the field values must be unique,\nvalues: list of distinct allowed values,\nrex: list of regular expressions, to cover all cases\n\nverify: verify if the dataset - after being updated - respects the constraints.\ndetect: write a csv records file with deviating rows\n\nkedro tdda discover -h\nOptions:\n  -d, --dataset TEXT  The name of the pandas catalog entry for which\n                      constraints be inferred.\n  -e, --env TEXT      The kedro environment where the dataset to retrieve is\n                      available. Default to 'base'\n  -o, --overwrite     Boolean indicator for overwriting an existing tdda\n                      constrains yml specification\n  -h, --help          Show this message and exit.```"
+    "text": "This plugin extends kedro with a lightweight data validation tool: tdda. The tdda package enables you to discover constraints from data, validate new data and detect anomalies. Check the tdda website for more info.\nThis kedro plugin is limited to it’s constraints API and alike tdda only supports pandas datasets. The plugin includes a CLI interface and dataset hooks\nFor more extensive needs, please check kedro_pandera\n\n\nYou can install the package like so\npip install git+https://github.com/sinanpl/kedro_tdda\n\n\n\n\n\nThe plugin currently uses the constraints API of tdda. The available commands are\n\ndiscover: infer constraints for a dataset and write to yaml. Constraints are inferred by field. Examples are:\n\ntype: one of int, real, bool, string or date\nmin: minimum allowed value,\nmax: maximum allowed value,\nmin_length: minimum allowed string length (for string fields),\nmax_length: maximum allowed string length (for string fields),\nmax_nulls: maximum number of null values allowed,\nsign: one of positive, negative, non-positive, non-negative,\nno_duplicates: true if the field values must be unique,\nvalues: list of distinct allowed values,\nrex: list of regular expressions, to cover all cases\n\nverify: verify if the dataset - after being updated - respects the constraints.\ndetect: write a csv records file with deviating rows\n\nkedro tdda discover -h\nOptions:\n  -d, --dataset TEXT  The name of the pandas catalog entry for which\n                      constraints be inferred.\n  -e, --env TEXT      The kedro environment where the dataset to retrieve is\n                      available. Default to 'base'\n  -o, --overwrite     Boolean indicator for overwriting an existing tdda\n                      constrains yml specification\n  -h, --help          Show this message and exit.```\n\n\n\nThe TddaHooks() will verify a catalog dataset after loading if there is a contraints definition. This hook is automatically registered after installation and can be disabled by updating DISABLE_HOOKS_FOR_PLUGINS in the settings.py of your kedro project\nDISABLE_HOOKS_FOR_PLUGINS = (\"kedro_tdda\",)"
   },
   {
     "objectID": "index.html#installation",
@@ -68,18 +117,7 @@
     "href": "index.html#usage",
     "title": "kedro-tdda",
     "section": "",
-    "text": "The plugin currently uses the constraints API of tdda. The available commands are\n\ndiscover: infer constraints for a dataset and write to yaml. Constraints are inferred by field. Examples are:\n\ntype: one of int, real, bool, string or date\nmin: minimum allowed value,\nmax: maximum allowed value,\nmin_length: minimum allowed string length (for string fields),\nmax_length: maximum allowed string length (for string fields),\nmax_nulls: maximum number of null values allowed,\nsign: one of positive, negative, non-positive, non-negative,\nno_duplicates: true if the field values must be unique,\nvalues: list of distinct allowed values,\nrex: list of regular expressions, to cover all cases\n\nverify: verify if the dataset - after being updated - respects the constraints.\ndetect: write a csv records file with deviating rows\n\nkedro tdda discover -h\nOptions:\n  -d, --dataset TEXT  The name of the pandas catalog entry for which\n                      constraints be inferred.\n  -e, --env TEXT      The kedro environment where the dataset to retrieve is\n                      available. Default to 'base'\n  -o, --overwrite     Boolean indicator for overwriting an existing tdda\n                      constrains yml specification\n  -h, --help          Show this message and exit.```"
-  },
-  {
-    "objectID": "reference/detect.html",
-    "href": "reference/detect.html",
-    "title": "detect",
-    "section": "",
-    "text": "detect\ncli.detect(dataset_name, env, target_dir)\nThe tdda detect command is used to detect anomalies on data, by checking pandas dataframes against specified constraints.",
-    "crumbs": [
-      "CLI commands",
-      "detect"
-    ]
+    "text": "The plugin currently uses the constraints API of tdda. The available commands are\n\ndiscover: infer constraints for a dataset and write to yaml. Constraints are inferred by field. Examples are:\n\ntype: one of int, real, bool, string or date\nmin: minimum allowed value,\nmax: maximum allowed value,\nmin_length: minimum allowed string length (for string fields),\nmax_length: maximum allowed string length (for string fields),\nmax_nulls: maximum number of null values allowed,\nsign: one of positive, negative, non-positive, non-negative,\nno_duplicates: true if the field values must be unique,\nvalues: list of distinct allowed values,\nrex: list of regular expressions, to cover all cases\n\nverify: verify if the dataset - after being updated - respects the constraints.\ndetect: write a csv records file with deviating rows\n\nkedro tdda discover -h\nOptions:\n  -d, --dataset TEXT  The name of the pandas catalog entry for which\n                      constraints be inferred.\n  -e, --env TEXT      The kedro environment where the dataset to retrieve is\n                      available. Default to 'base'\n  -o, --overwrite     Boolean indicator for overwriting an existing tdda\n                      constrains yml specification\n  -h, --help          Show this message and exit.```\n\n\n\nThe TddaHooks() will verify a catalog dataset after loading if there is a contraints definition. This hook is automatically registered after installation and can be disabled by updating DISABLE_HOOKS_FOR_PLUGINS in the settings.py of your kedro project\nDISABLE_HOOKS_FOR_PLUGINS = (\"kedro_tdda\",)"
   },
   {
     "objectID": "reference/index.html",
@@ -132,19 +170,5 @@
       "Hooks",
       "TddaHooks"
     ]
-  },
-  {
-    "objectID": "reference/cli.discover.html",
-    "href": "reference/cli.discover.html",
-    "title": "cli.discover",
-    "section": "",
-    "text": "cli.discover\ncli.discover(dataset_name, env, overwrite)\nThe tdda discover command generates constraints for data, and saves the generated constraints as a yaml file."
-  },
-  {
-    "objectID": "reference/cli.verify.html",
-    "href": "reference/cli.verify.html",
-    "title": "cli.verify",
-    "section": "",
-    "text": "cli.verify\ncli.verify(dataset_name, env)\nThe tdda verify command is used to validate pandas dataframes, against a constraints specification."
   }
 ]

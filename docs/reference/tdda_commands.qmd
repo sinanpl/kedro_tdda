@@ -1,7 +1,0 @@
-# tdda_commands { #kedro_tdda.cli.tdda_commands }
-
-```python
-cli.tdda_commands()
-```
-
-Use tdda-specific commands inside kedro project.

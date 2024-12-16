@@ -51,7 +51,7 @@ Options:
                       constrains yml specification
   -h, --help          Show this message and exit.```
 ```
-<!-- 
+
 ### Hooks
 
 The `TddaHooks()` will **verify** a catalog dataset after loading if there is a contraints definition.
@@ -60,4 +60,4 @@ in the `settings.py` of your `kedro` project
 
 ```python
 DISABLE_HOOKS_FOR_PLUGINS = ("kedro_tdda",)
-``` -->
+```

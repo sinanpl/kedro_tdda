@@ -1,8 +1,22 @@
 # detect { #kedro_tdda.cli.detect }
 
 ```python
-cli.detect(dataset_name, env, target_dir)
+cli.detect(dataset_name=None, env='base', target_dir='./tdda_detect')
 ```
 
 The tdda detect command is used to detect anomalies on data, 
 by checking pandas dataframes against specified constraints.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name         | Type            | Description                                                                                                                              | Default           |
+|--------------|-----------------|------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| dataset_name | Optional\[str\] | Optional catalog name for the pandas dataset.  If not specified, discover will write constraints for every pandas dataset in the catalog | `None`            |
+| env          | Optional\[str\] | Which conf/<env>/tdda folder to read constraints from                                                                                    | `'base'`          |
+| target_dir   | Optional\[str\] | Which directory to write `detect` (.csv) files to                                                                                        | `'./tdda_detect'` |
+
+## Usage {.doc-section .doc-section-usage}
+
+```sh
+kedro discover
+```

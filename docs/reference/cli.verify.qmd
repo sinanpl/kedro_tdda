@@ -1,8 +1,0 @@
-# cli.verify { #kedro_tdda.cli.verify }
-
-```python
-cli.verify(dataset_name, env)
-```
-
-The tdda verify command is used to validate pandas dataframes, 
-against a constraints specification.

@@ -5,6 +5,7 @@
 # generate docs content
 quartodoc:
   style: pkgdown
+  parser: google
   package: kedro_tdda
   sidebar: _sidebar.yml
   sections:

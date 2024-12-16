@@ -223,10 +223,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="kedro_tdda.cli.discover" class="level1">
 <h1>discover</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cli.discover(dataset_name, env, overwrite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cli.discover(dataset_name<span class="op">=</span><span class="va">None</span>, env<span class="op">=</span>DEFAULT_ENV_TDDA, overwrite<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The tdda discover command generates constraints for data, and saves the generated constraints as a yaml file.</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 72%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataset_name</td>
+<td>Optional[str]</td>
+<td>Optional catalog name for the pandas dataset. If not specified, discover will write constraints for every pandas dataset in the catalog</td>
+<td><code>None</code></td>
+</tr>
+<tr class="even">
+<td>env</td>
+<td>Optional[str]</td>
+<td>Which conf/<env>/tdda folder to write the constraints to</env></td>
+<td><code>DEFAULT_ENV_TDDA</code></td>
+</tr>
+<tr class="odd">
+<td>overwrite</td>
+<td>Optional[bool]</td>
+<td>If a constraints file exists, the overwrite flag will overwrite the file.</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="usage" class="level2 doc-section doc-section-usage">
+<h2 class="doc-section doc-section-usage anchored" data-anchor-id="usage">Usage</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">kedro</span> discover</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
