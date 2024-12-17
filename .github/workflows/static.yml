@@ -37,22 +37,35 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Install dependencies
+      - name: Install quarto 
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.4.515
+
+      - name: Install current repo
         run: |
           python -m pip install --upgrade pip
           pip install .  
-
-      - name: Verify installation
+          
+      - name: Install quartodoc
         run: |
-          python -c "import kedro_tdda; print('Package installed successfully')"
+          pip install quartodoc
+      
+      - name: Docstrings to qmd
+        run: |
+          quartodoc build
 
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v5
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     # Upload entire repository
-      #     path: './docs/_site'
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+      
+  
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: './docs/_site'
       # - name: Deploy to GitHub Pages
       #   id: deployment
       #   uses: actions/deploy-pages@v4
