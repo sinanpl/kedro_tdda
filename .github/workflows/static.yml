@@ -53,6 +53,7 @@ jobs:
       
       - name: Docstrings to qmd
         run: |
+          cd ./docs/
           quartodoc build
 
       - name: Render Quarto Project
