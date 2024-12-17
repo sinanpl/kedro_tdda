@@ -1,3 +1,6 @@
+---
+date: today
+---
 # kedro-tdda
 
 This plugin extends `kedro` with a lightweight data validation tool: `tdda`.
