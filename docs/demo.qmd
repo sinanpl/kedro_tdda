@@ -1,0 +1,115 @@
+---
+title: "`kedro_tdda` tutorial"
+jupyter: python3
+format: 
+    html: 
+        toc: true
+
+---
+
+This tutorial elaborates on the workflow and behavior of `kedro_tdda`.
+It departs from the `kedro-iris` starter template which can be reproduced with
+
+```sh
+kedro new --name=kedro-iris-tdda --tools=data --example=yes
+```
+
+```{python}
+#| echo: false
+#| output: false
+%cd ./kedro-iris-tdda
+```
+
+
+When `kedro_tdda` is installed you can use the `kedro tdda` commands.
+
+:::aside
+
+:::{.callout-note appearance="simple"}
+## Note on code syntax
+
+The `kedro tdda` is supposed to be used from the terminal as CLI interface. 
+Running from a notebook is not recommended. 
+When developing, the `!kedro` syntax should be exchange for `kedro`
+:::
+
+:::
+
+```{python}
+!kedro tdda -h
+```
+
+- `discover`: will write constraints to conf/`env`/tdda/`dataset`.yml
+- `verify`: will check constraints for data
+- `detect`: will write csv files containing observations not matching the expectation.
+
+### `discover`
+
+```{python}
+!kedro tdda discover
+```
+
+```{python}
+!cat ./conf/base/tdda/companies.yml
+```
+
+### `verify`
+
+```{python}
+!kedro tdda verify --dataset companies
+```
+
+### `TddaHooks`
+
+`TddaHooks` include dataset validation when a pandas dataset is loaded.
+Let's modify the constraints for `companies` and check what happens.
+
+```{python}
+import yaml
+
+filepath = './conf/base/tdda/companies.yml'
+with open(filepath, 'r') as f:
+    constr = yaml.safe_load(f)
+
+# modify constraint
+constr['companies']['fields']['company_location']['max_length'] = 20 # instead of 29
+with open(filepath, 'w') as f:
+    yaml.safe_dump(constr, f)
+```
+
+`TddaHooks` check after loading a dataset if there's any contraint definition
+and whether it matches. In this case, `kedro run` or interactively loading `companies`
+will raise a `TddaVerificationError`
+
+```{python}
+#| error: true
+!kedro run
+```
+
+### `detect`
+
+To get an overview of which observations deviate from the pattern, 
+you can use the `detect` interface
+
+```{python}
+!kedro tdda detect
+```
+
+
+```{python}
+import pandas as pd
+
+# read raw companies and anomalies
+companies = pd.read_csv('data/01_raw/companies.csv').reset_index()[['index', 'company_location']]
+companies_detected = pd.read_csv('./tdda_detect/companies.csv')
+
+companies.merge(companies_detected, how='outer', left_on='index', right_on='Index').head(15)
+```
+
+
+```{python}
+#| echo: false
+%%bash
+rm -r -f conf/base/tdda
+rm -r -f tdda_detect
+```

@@ -42,10 +42,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install .  
-          
+      
+      - name: Init kedro project for demo
+        run: |
+          cd docs/
+          python -m kedro new --name=kedro-iris-tdda --tools=data --example=yes
+
       - name: Install quartodoc
         run: |
-          pip install quartodoc
+          python -m pip install quartodoc jupyter nbformat
       
       - name: Docstrings to qmd
         run: |

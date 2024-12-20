@@ -31,6 +31,8 @@ website:
     left:
       - text: "Reference"
         href: ./reference/index.html
+      - text: "Demo"
+        href: ./demo.html
     right:
       - text: "`kedro`"
         href: https://kedro.org/
