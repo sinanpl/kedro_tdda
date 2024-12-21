@@ -25,7 +25,9 @@ project:
   type: website
   render: 
     - "*.qmd"
-    - "!demo.qmd" # avoid rendering local docs notebook -> html is copied when available
+    - "!_demo.qmd" # avoid rendering local docs notebook -> html is copied when available
+  post-render: 
+    - fix-shell.py
 
 website:
   title: "kedro_tdda"

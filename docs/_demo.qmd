@@ -29,49 +29,65 @@ kedro new --name=kedro-iris-tdda --tools=data --example=yes
 %cd ./kedro-iris-tdda
 ```
 
+```{python}
+#| echo: false
+#| output: false
+!kedro run
+```
 
-When `kedro_tdda` is installed you can use the `kedro tdda` commands.
-
-:::aside
-
-:::{.callout-note appearance="simple"}
-## Note on code syntax
-
-The `kedro tdda` is supposed to be used from the terminal as CLI interface. 
-Running from a notebook is not recommended. 
-When developing, the `!kedro` syntax should be exchange for `kedro`
-:::
-
-:::
+When `kedro_tdda` is installed you can use the `kedro tdda` from the command line
 
 ```{python}
 !kedro tdda -h
 ```
 
-- `discover`: will write constraints to conf/`env`/tdda/`dataset`.yml
-- `verify`: will check constraints for data
-- `detect`: will write csv files containing observations not matching the expectation.
 
 ### `discover`
+
+With discover, you can write constraints to the `conf/<<env>>/tdda/` folder
+for all available pandas datasets. 
+
 
 ```{python}
 !kedro tdda discover
 ```
 
+An example constraints file that is auto-generated for companies below.
+For more extended use cases, check the [tdda docs](https://github.com/tdda/tdda/blob/master/tdda/constraints/tdda_json_file_format.md)
+and extend the examples in `yaml` format
+
 ```{python}
 !cat ./conf/base/tdda/companies.yml
 ```
 
+Optional arguments for discover are
+
+```{python}
+!kedro tdda discover --help
+```
+
 ### `verify`
+
+`verify` will check constraints for data
+
 
 ```{python}
 !kedro tdda verify --dataset companies
 ```
 
+
+Optional arguments for discover are
+
+```{python}
+!kedro tdda verify --help
+```
+
+
 ### `TddaHooks`
 
-`TddaHooks` include dataset validation when a pandas dataset is loaded.
-Let's modify the constraints for `companies` and check what happens.
+`TddaHooks` include dataset validation when a pandas dataset is loaded, for example
+during a kedro pipeline run. Let's modify the constraints for `companies` and run a pipeline.
+Now, a TddaVerificationError is raised.
 
 ```{python}
 import yaml
@@ -86,10 +102,6 @@ with open(filepath, 'w') as f:
     yaml.safe_dump(constr, f)
 ```
 
-`TddaHooks` check after loading a dataset if there's any contraint definition
-and whether it matches. In this case, `kedro run` or interactively loading `companies`
-will raise a `TddaVerificationError`
-
 ```{python}
 #| error: true
 !kedro run
@@ -97,13 +109,20 @@ will raise a `TddaVerificationError`
 
 ### `detect`
 
-To get an overview of which observations deviate from the pattern, 
-you can use the `detect` interface
+`detect` will write csv files containing observations not matching one or more field expectations.
 
 ```{python}
 !kedro tdda detect
 ```
 
+
+Optional arguments for discover are
+
+```{python}
+!kedro tdda verify --help
+```
+
+An example, continuing our companies datasets below.
 
 ```{python}
 import pandas as pd
@@ -119,6 +138,6 @@ companies.merge(companies_detected, how='outer', left_on='index', right_on='Inde
 ```{python}
 #| echo: false
 %%bash
-rm -r -f conf/base/tdda
-rm -r -f tdda_detect
+rm -r -f conf/base/tdda/*
+rm -r -f tdda_detect/*
 ```

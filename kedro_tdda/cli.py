@@ -50,6 +50,7 @@ def tdda_commands():
 )
 def discover(dataset_name: Optional[str] = None, env: Optional[str] = DEFAULT_ENV_TDDA, overwrite: Optional[bool] = None):
     """
+    \f
     The tdda discover command generates constraints for data, 
     and saves the generated constraints as a yaml file.
 
@@ -93,6 +94,7 @@ def verify(
     env: Optional[str]='base',
 ):
     """
+    \f
     The tdda verify command is used to validate pandas dataframes, 
     against a constraints specification.
     
@@ -137,6 +139,7 @@ def verify(
 )
 def detect(dataset_name: Optional[str]=None, env: Optional[str]='base', target_dir: Optional[str]='./tdda_detect'):
     """
+    \f
     The tdda detect command is used to detect anomalies on data, 
     by checking pandas dataframes against specified constraints.
 
