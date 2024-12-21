@@ -43,15 +43,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install .  
       
-      - name: Init kedro project for demo
-        run: |
-          cd docs/
-          python -m kedro new --name=kedro-iris-tdda --tools=data --example=yes
-
       - name: Install quartodoc
         run: |
-          python -m pip install quartodoc jupyter nbformat
-      
+          python -m pip install quartodoc 
+
       - name: Docstrings to qmd
         run: |
           cd ./docs/
@@ -61,13 +56,15 @@ jobs:
         uses: quarto-dev/quarto-actions/render@v2
         with:
           path: ./docs
-  
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './docs/_site'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

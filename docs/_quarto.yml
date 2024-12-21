@@ -23,6 +23,9 @@ quartodoc:
 # render options
 project:
   type: website
+  render: 
+    - "*.qmd"
+    - "!demo.qmd" # avoid rendering local docs notebook -> html is copied when available
 
 website:
   title: "kedro_tdda"
