@@ -4830,8 +4830,8 @@ quarto run fix-shell.py
 <p>This tutorial elaborates on the workflow and behavior of <code>kedro_tdda</code>. It departs from the <code>kedro-iris</code> starter template which can be reproduced with</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">kedro</span> new <span class="at">--name</span><span class="op">=</span>kedro-iris-tdda <span class="at">--tools</span><span class="op">=</span>data <span class="at">--example</span><span class="op">=</span>yes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>When <code>kedro_tdda</code> is installed you can use the <code>kedro tdda</code> from the command line</p>
-<div id="df437058" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>kedro tdda <span class="op">-</span>h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="68b01095" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>kedro tdda <span class="op">-</span>h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>INFO - Using &#39;/Users/sinan/personal/kedro_plugin/kedro_tdda/docs/kedro-iris-tdda/conf/base/logging.yml&#39; as logging configuration. 
 Usage: kedro tdda [OPTIONS] COMMAND [ARGS]...
@@ -4850,16 +4850,16 @@ Commands:
 <section id="discover" class="level3">
 <h3 class="anchored" data-anchor-id="discover"><code>discover</code></h3>
 <p>With discover, you can write constraints to the <code>conf/&lt;&lt;env&gt;&gt;/tdda/</code> folder for all available pandas datasets.</p>
-<div id="c71f96a7" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>kedro tdda discover</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="baadaa53" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>kedro tdda discover</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>INFO - Using &#39;/Users/sinan/personal/kedro_plugin/kedro_tdda/docs/kedro-iris-tdda/conf/base/logging.yml&#39; as logging configuration. 
 INFO - Loading data from companies (CSVDataset)...
-WARNING - TDDA discovery for `companies` skipped. File exists: ./conf/base/tdda/companies.yml
+INFO - TDDA constraints are written to ./conf/base/tdda/companies.yml
 INFO - Loading data from reviews (CSVDataset)...
-WARNING - TDDA discovery for `reviews` skipped. File exists: ./conf/base/tdda/reviews.yml
+INFO - TDDA constraints are written to ./conf/base/tdda/reviews.yml
 INFO - Loading data from shuttles (ExcelDataset)...
-WARNING - TDDA discovery for `shuttles` skipped. File exists: ./conf/base/tdda/shuttles.yml
+INFO - TDDA constraints are written to ./conf/base/tdda/shuttles.yml
 INFO - Loading data from preprocessed_companies (ParquetDataset)...
 INFO - TDDA constraints are written to ./conf/base/tdda/preprocessed_companies.yml
 INFO - Loading data from preprocessed_shuttles (ParquetDataset)...
@@ -4869,18 +4869,18 @@ INFO - TDDA constraints are written to ./conf/base/tdda/model_input_table.yml</c
 </div>
 </div>
 <p>An example constraints file that is auto-generated for companies below. For more extended use cases, check the <a href="https://github.com/tdda/tdda/blob/master/tdda/constraints/tdda_json_file_format.md">tdda docs</a> and extend the examples in <code>yaml</code> format</p>
-<div id="43bdf647" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat .<span class="op">/</span>conf<span class="op">/</span>base<span class="op">/</span>tdda<span class="op">/</span>companies.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a6deffb2" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cat .<span class="op">/</span>conf<span class="op">/</span>base<span class="op">/</span>tdda<span class="op">/</span>companies.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>companies:
     creation_metadata:
         creator: TDDA 2.2.05
         host: Sinans-MacBook-Pro.local
-        local_time: &#39;2024-12-21T15:05:50&#39;
+        local_time: &#39;2024-12-21T15:13:17&#39;
         n_records: 10019
         n_selected: 10019
         user: sinan
-        utc_time: &#39;2024-12-21T14:05:50&#39;
+        utc_time: &#39;2024-12-21T14:13:17&#39;
     fields:
         company_location:
             max_length: 29
@@ -4912,8 +4912,8 @@ INFO - TDDA constraints are written to ./conf/base/tdda/model_input_table.yml</c
 </div>
 </div>
 <p>Optional arguments for discover are</p>
-<div id="1774e08c" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>kedro tdda discover <span class="op">--</span><span class="bu">help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="dc2396b7" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>kedro tdda discover <span class="op">--</span><span class="bu">help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>INFO - Using &#39;/Users/sinan/personal/kedro_plugin/kedro_tdda/docs/kedro-iris-tdda/conf/base/logging.yml&#39; as logging configuration. 
 Usage: kedro tdda discover [OPTIONS]
@@ -4932,8 +4932,8 @@ Options:
 <section id="verify" class="level3">
 <h3 class="anchored" data-anchor-id="verify"><code>verify</code></h3>
 <p><code>verify</code> will check constraints for data</p>
-<div id="0a0e2f41" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>kedro tdda verify <span class="op">--</span>dataset companies</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="19485f57" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>kedro tdda verify <span class="op">--</span>dataset companies</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>INFO - Using &#39;/Users/sinan/personal/kedro_plugin/kedro_tdda/docs/kedro-iris-tdda/conf/base/logging.yml&#39; as logging configuration. 
 INFO - Loading data from companies (CSVDataset)...
@@ -4941,8 +4941,8 @@ INFO - Verification summary `companies`: 20 passses, 0 failures</code></pre>
 </div>
 </div>
 <p>Optional arguments for discover are</p>
-<div id="20b345d6" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>kedro tdda verify <span class="op">--</span><span class="bu">help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="187edf50" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>kedro tdda verify <span class="op">--</span><span class="bu">help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>INFO - Using &#39;/Users/sinan/personal/kedro_plugin/kedro_tdda/docs/kedro-iris-tdda/conf/base/logging.yml&#39; as logging configuration. 
 Usage: kedro tdda verify [OPTIONS]
@@ -4959,7 +4959,7 @@ Options:
 <section id="tddahooks" class="level3">
 <h3 class="anchored" data-anchor-id="tddahooks"><code>TddaHooks</code></h3>
 <p><code>TddaHooks</code> include dataset validation when a pandas dataset is loaded, for example during a kedro pipeline run. Let’s modify the constraints for <code>companies</code> and run a pipeline. Now, a TddaVerificationError is raised.</p>
-<div id="a4c136d6" class="cell" data-execution_count="9">
+<div id="672d0b81" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yaml</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>filepath <span class="op">=</span> <span class="st">&#39;./conf/base/tdda/companies.yml&#39;</span></span>
@@ -4971,8 +4971,8 @@ Options:
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(filepath, <span class="st">&#39;w&#39;</span>) <span class="im">as</span> f:</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    yaml.safe_dump(constr, f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="66e2cf09" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>kedro run</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c7690e97" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>kedro run</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>INFO - Using &#39;/Users/sinan/personal/kedro_plugin/kedro_tdda/docs/kedro-iris-tdda/conf/base/logging.yml&#39; as logging configuration. 
 INFO - Kedro project kedro-iris-tdda
@@ -5053,8 +5053,8 @@ kedro_tdda.utils.TddaVerificationError: Dataset `companies` deviates from constr
 <section id="detect" class="level3">
 <h3 class="anchored" data-anchor-id="detect"><code>detect</code></h3>
 <p><code>detect</code> will write csv files containing observations not matching one or more field expectations.</p>
-<div id="5e475ed6" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>kedro tdda detect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="13380559" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>kedro tdda detect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>INFO - Using &#39;/Users/sinan/personal/kedro_plugin/kedro_tdda/docs/kedro-iris-tdda/conf/base/logging.yml&#39; as logging configuration. 
 INFO - Loading data from companies (CSVDataset)...
@@ -5074,8 +5074,8 @@ INFO - Verification summary `model_input_table`: 133 passses, 0 failures</code><
 </div>
 </div>
 <p>Optional arguments for discover are</p>
-<div id="7c32a682" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>kedro tdda verify <span class="op">--</span><span class="bu">help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bdddacf9" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>kedro tdda verify <span class="op">--</span><span class="bu">help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>INFO - Using &#39;/Users/sinan/personal/kedro_plugin/kedro_tdda/docs/kedro-iris-tdda/conf/base/logging.yml&#39; as logging configuration. 
 Usage: kedro tdda verify [OPTIONS]
@@ -5089,7 +5089,7 @@ Options:
 </div>
 </div>
 <p>An example, continuing our companies datasets below.</p>
-<div id="9fb41040" class="cell" data-execution_count="13">
+<div id="37837d46" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># read raw companies and anomalies</span></span>
