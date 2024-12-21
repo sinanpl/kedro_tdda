@@ -50,10 +50,9 @@ def tdda_commands():
 )
 def discover(dataset_name: Optional[str] = None, env: Optional[str] = DEFAULT_ENV_TDDA, overwrite: Optional[bool] = None):
     """
-    \f
-    The tdda discover command generates constraints for data, 
-    and saves the generated constraints as a yaml file.
+    Discover constraints for pandas datasets in the catalog.
 
+    \f
     Args:
         dataset_name (Optional[str]): Optional catalog name for the pandas dataset. 
             If not specified, discover will write constraints for every
@@ -64,7 +63,7 @@ def discover(dataset_name: Optional[str] = None, env: Optional[str] = DEFAULT_EN
     
     Usage:
         ```sh
-        kedro discover
+        kedro tdda discover
         ```
     """
     ks = KedroSettings(env)
@@ -94,10 +93,9 @@ def verify(
     env: Optional[str]='base',
 ):
     """
-    \f
-    The tdda verify command is used to validate pandas dataframes, 
-    against a constraints specification.
+    Verify data against constraints specifications
     
+    \f
     Args:
         dataset_name (Optional[str]): Optional catalog name for the pandas dataset. 
             If not specified, verify will check constraints for every
@@ -106,7 +104,7 @@ def verify(
 
     Usage:
         ```sh
-        kedro verify
+        kedro tdda verify
         ```
     """
     ks = KedroSettings(env)
@@ -139,10 +137,9 @@ def verify(
 )
 def detect(dataset_name: Optional[str]=None, env: Optional[str]='base', target_dir: Optional[str]='./tdda_detect'):
     """
-    \f
-    The tdda detect command is used to detect anomalies on data, 
-    by checking pandas dataframes against specified constraints.
+    Detect and write anomalies for data that deviates from the constraints
 
+    \f
     Args:
         dataset_name (Optional[str]): Optional catalog name for the pandas dataset. 
             If not specified, discover will write constraints for every
@@ -152,7 +149,7 @@ def detect(dataset_name: Optional[str]=None, env: Optional[str]='base', target_d
     
     Usage:
         ```sh
-        kedro discover
+        kedro tdda discover
         ```
     """
     ks = KedroSettings(env)
